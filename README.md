@@ -7,7 +7,7 @@ Generic discrete deterministic finite state puzzle solver.
 Python3 module `puzzsolver.py`. Supplies the class `PuzzSolver` which has a `solve()` method.
 
 ### Usage
-Place the module `puzzsolver.py` in a subdirectory named `./puzzles/` somewhere in one of your `PYTHONPATH` directories.  Optionally copy the two examples `jug_fill.py` and `nine_sliding_blocks.py` into this directory as well.
+Place the module `puzzsolver.py` in a subdirectory named `./ddfpuzzles/` somewhere in one of your `PYTHONPATH` directories.  Optionally copy the two examples `jug_fill.py` and `nine_sliding_blocks.py` into this directory as well.
 
 If you know how to create a class derived from `Puzzle` with an `__iter()__` method which runs through all possible single step moves available given the current game state. It should yield the state of the game after such a valid move.  
 
