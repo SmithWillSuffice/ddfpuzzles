@@ -1,4 +1,4 @@
-# ddfpuzzles &middot; [![Testing Status](https://img.shields.io/badge/tests-11%20passed-brightgreen.svg)](https://img.shields.io/badge/tests-11%20passed-brightgreen.svg) [![GitHub license](https://img.shields.io/badge/license-GPL.v.3-brightgreen.svg](https://img.shields.io/badge/license-GPL.v.3-brightgreen.svg)
+# ddfpuzzles &middot; [![Testing Status](https://img.shields.io/badge/tests-11%20passed-brightgreen.svg)](https://img.shields.io/badge/tests-11%20passed-brightgreen.svg) [![GitHub license](https://img.shields.io/badge/license-GPL.v.3-brightgreen.svg)](https://img.shields.io/badge/license-GPL.v.3-brightgreen.svg)
 > puzzles, sliding blocks, jug filling
 
 Generic discrete deterministic finite state puzzle solver.
