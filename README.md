@@ -1,2 +1,2 @@
 # ddfpuzzles
-Generic discrete determinisitc finite state puzzle solver
+Generic discrete deterministic finite state puzzle solver
