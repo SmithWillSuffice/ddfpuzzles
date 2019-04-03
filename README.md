@@ -31,9 +31,9 @@ For more details please read the docstrings in the modules.
  (0, 4, 4)]
 
 ```
-The interpretation is you start with three jugs, they have capacities (3,5,8) litres respectively. 8 litres of water is in the large jug.  Each move either empties one jug completely into another if possible without overflow, or uses water in one jug to completely fill another.  The goal is to get 4 liters in two of the jugs.  The output above shows a sequence of valid moves to get this done.  The first move uses the large jug to completely fill the middle jug.  The second move uses the middle jug to completely fill the small jug.
+The interpretation is you start with three jugs, they have capacities (3,5,8) litres respectively. At the start 8 litres of water is in the large jug.  Each move either empties one jug completely into another if possible without overflow, or uses water in one jug to completely fill another.  The goal is to get 4 liters in two of the jugs.  The output above shows a sequence of valid moves to get this done.  The first move uses the large jug to completely fill the middle jug.  The second move uses the middle jug to completely fill the small jug.
 
-See the two examples `jug_fill.py` and `nine_sliding_blocks.py`.  These were adapted from Raymond Hettinger's talk which you can see here: [http://bayareapython.com/media/raymond-2018-holiday-party/puzzle.html](http://bayareapython.com/media/raymond-2018-holiday-party/puzzle.html)
+See the two examples [`jug_fill.py`](jug_fill.py) and [`nine_sliding_blocks.py`](nine_sliding_blocks.py).  These were adapted from Raymond Hettinger's talk which you can see here: [http://bayareapython.com/media/raymond-2018-holiday-party/puzzle.html](http://bayareapython.com/media/raymond-2018-holiday-party/puzzle.html)
 
 
 ### Requirements
