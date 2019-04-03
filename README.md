@@ -1,8 +1,7 @@
-# ddfpuzzles
-Generic discrete deterministic finite state puzzle solver.
-
-# Discrete state puzzle solving framework &middot; [![Testing Status](https://img.shields.io/badge/tests-11%20passed-brightgreen.svg)](https://img.shields.io/badge/tests-11%20passed-brightgreen.svg) [![GitHub license](https://img.shields.io/aur/license/:packageName.svg](https://img.shields.io/aur/license/:packageName.svg)
+# ddfpuzzles &middot; [![Testing Status](https://img.shields.io/badge/tests-11%20passed-brightgreen.svg)](https://img.shields.io/badge/tests-11%20passed-brightgreen.svg) [![GitHub license](https://img.shields.io/badge/license-GPL.v.3-brightgreen.svg](https://img.shields.io/badge/license-GPL.v.3-brightgreen.svg)
 > puzzles, sliding blocks, jug filling
+
+Generic discrete deterministic finite state puzzle solver.
 
 ### Provides
 Python3 module `puzzsolver.py`. Supplies the class `PuzzSolver` which has a `solve()` method.
