@@ -9,9 +9,9 @@ Python3 module `puzzsolver.py`. Supplies the class `PuzzSolver` which has a `sol
 ### Usage
 Place the module `puzzsolver.py` in a subdirectory named `./ddfpuzzles/` somewhere in one of your `PYTHONPATH` directories.  Optionally copy the two examples `jug_fill.py` and `nine_sliding_blocks.py` into this directory as well.
 
-If you know how to create a class derived from `Puzzle` with an `__iter()__` method which runs through all possible single step moves available given the current game state. It should yield the state of the game after such a valid move.  
+If you know how to create a class derived from `PuzzSolver` with an `__iter()__` method which runs through all possible single step moves available given the current game state. It should yield the state of the game after such a valid move.  
 
-The `puzzle` module should be able to solve the game for you, by returning a list of valid moves which go from the start of the game to the goal (end state) of the game.  For this to work you also need to define a member function `canonical()` for your class which converts the current game state into a canonical form (a representative of an equivalence class of game states).
+The `puzzsolver` module should be able to solve the game for you, by returning a list of valid moves which go from the start of the game to the goal (end state) of the game.  For this to work you also need to define a member function `canonical()` for your class which converts the current game state into a canonical form (a representative of an equivalence class of game states).
 
 For more details please read the docstrings in the modules.
 
@@ -49,6 +49,7 @@ $ sudo apt-get install python3-pytest
 
 To run the tests:
 ```shell
+$ cd <path to ddfpuzzles>
 $ py.test-3
 ```
 
