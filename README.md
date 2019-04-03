@@ -54,10 +54,9 @@ $ py.test-3
 
 ## Other Ideas
 
-It might be possible to extend the basic solver in the module `puzzsolver.py` to solve continuous state problems where a "close enough" goal can be defined.  Search heuristics could then be used to explore the game space instead of iterating through all possible moves.
+After writing the two examples, `jug_fill.py` and `nine_slding_blocks.py` I was thinking about solving a game of Hex-a-hop.  For simple Hex-a-hop grids where the tiles are one of two types, either permanent or disappear after hopping on them it might not be too hard. But the advanced levels involving further types of booster tiles could get tricky.
 
-After writing the two examples, `jug_fill.py` and `nine_slding_blocks.py` I was thinking about solving a game of Hex-a-hop.  For simple Hex-a-hop grids where the tiles disappear after hopping on them it might not be too hard. But the advanced levels involving booster tiles could get tricky.
-
+It might be possible to adapt the basic solver in the module `puzzsolver.py` to solve continuous state problems where a "close enough" goal can be defined.  Search heuristics could then be used to explore the game space instead of iterating through all possible moves.  This would have to be a completley different project.
 
 ## Licensing
 
