@@ -1,0 +1,281 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>jug_fill module &mdash; ddfpuzzles 1.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="ddfpuzzles 1.0.1 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ddfpuzzles
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">jug_fill module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ddfpuzzles</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>jug_fill module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/jug_fill.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-jug_fill">
+<span id="jug-fill-module"></span><h1>jug_fill module<a class="headerlink" href="#module-jug_fill" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="jug_fill.JugFill">
+<em class="property">class </em><code class="descclassname">jug_fill.</code><code class="descname">JugFill</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#jug_fill.JugFill" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ddfpuzzles.puzzsolver.PuzzSolver</span></code></p>
+<p>Given a two empty jugs with 3 and 5 litre capacities and a full
+jug with 8 litres, find a sequence of pours leaving four litres
+in the two largest jugs.</p>
+<p>Reference: &lt;<a class="reference external" href="http://bayareapython.com/media/raymond-2018-holiday-party/puzzle.html#jug-filling-problem">http://bayareapython.com/media/raymond-2018-holiday-party/puzzle.html#jug-filling-problem</a>&gt;</p>
+<p>Unlike Hettinger’s version I cannot iterate through the game inside 
+the Puzzle.solve() because it exhausts the generator.  So instead my 
+Puzzle() class returns only the ‘trail’ set.</p>
+<p>Then in __main__ here I print out the solution by creating a second 
+instance of the same game going in reverse with the goal as the 
+initial pos.</p>
+<p>Keyword args:</p>
+<p>start = &lt;tuple&gt; - alternative initial game position. Default = (0,0,8).</p>
+<p>Usage:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pprint</span> <span class="k">import</span> <span class="n">pprint</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">puzz</span> <span class="o">=</span> <span class="n">JugFill</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="n">puzz</span><span class="o">.</span><span class="n">solve</span><span class="p">())</span>
+<span class="go">[(0, 0, 8),</span>
+<span class="go"> (0, 5, 3),</span>
+<span class="go"> (3, 2, 3),</span>
+<span class="go"> (0, 2, 6),</span>
+<span class="go"> (2, 0, 6),</span>
+<span class="go"> (2, 5, 1),</span>
+<span class="go"> (3, 4, 1),</span>
+<span class="go"> (0, 4, 4)]</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="jug_fill.JugFill.canonical">
+<code class="descname">canonical</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#jug_fill.JugFill.canonical" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="jug_fill.JugFill.capacity">
+<code class="descname">capacity</code><em class="property"> = (3, 5, 8)</em><a class="headerlink" href="#jug_fill.JugFill.capacity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="jug_fill.JugFill.goal">
+<code class="descname">goal</code><em class="property"> = (0, 4, 4)</em><a class="headerlink" href="#jug_fill.JugFill.goal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="jug_fill.JugFill.isgoal">
+<code class="descname">isgoal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#jug_fill.JugFill.isgoal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="jug_fill.JugFill.pos">
+<code class="descname">pos</code><em class="property"> = (0, 0, 8)</em><a class="headerlink" href="#jug_fill.JugFill.pos" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Bijou M. Smith.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

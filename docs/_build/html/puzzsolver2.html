@@ -1,0 +1,328 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>puzzsolver2 module &mdash; ddfpuzzles 1.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="ddfpuzzles 1.0.1 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ddfpuzzles
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">puzzsolver2 module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ddfpuzzles</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>puzzsolver2 module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/puzzsolver2.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-puzzsolver2">
+<span id="puzzsolver2-module"></span><h1>puzzsolver2 module<a class="headerlink" href="#module-puzzsolver2" title="Permalink to this headline">¶</a></h1>
+<p>Generic puzzle solver framework</p>
+<p>Test classes.  See ‘./puzzsolver.py’ for a clean version.</p>
+<p>Reference:
+&lt;<a class="reference external" href="http://bayareapython.com/media/raymond-2018-holiday-party/puzzle.html#core-logic">http://bayareapython.com/media/raymond-2018-holiday-party/puzzle.html#core-logic</a>&gt;</p>
+<p>Copyright (c) 2019, Bijou Murray Smith</p>
+<p>Licence:  GNU GPL.v.3, see: &lt;<a class="reference external" href="https://www.gnu.org/licenses/gpl.txt">https://www.gnu.org/licenses/gpl.txt</a>&gt;</p>
+<dl class="class">
+<dt id="puzzsolver2.PuzzSolver">
+<em class="property">class </em><code class="descclassname">puzzsolver2.</code><code class="descname">PuzzSolver</code><a class="headerlink" href="#puzzsolver2.PuzzSolver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">collections.deque</span></code></p>
+<p>Generic discrete state puzzle solver.  A Puzzle instantiation inherited 
+from this class must have a current state ‘pos’ and an iterator defined in 
+an __iter__() function.  It must also implement a method canonical() which
+transforms a state ‘pos’ into a canonical form (equivalence class standard 
+representative), how you do this is up to you and depends on the particulars
+of your puzzle.</p>
+<p>For an example see,
+‘./nine_sliding_blocks/nine_sliding_blocks/.py’
+or 
+‘./jug_fill/jug_fill2.py’</p>
+<p>Should work for any game/puzzle where a give state (or position ‘pos’) of 
+the game can be specified by a list or string, and a move is a discrete 
+transform of the state.</p>
+<dl class="method">
+<dt id="puzzsolver2.PuzzSolver.solve">
+<code class="descname">solve</code><span class="sig-paren">(</span><em>pos</em>, <em>depthFirst=False</em><span class="sig-paren">)</span><a class="headerlink" href="#puzzsolver2.PuzzSolver.solve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generic solver for a finite state discrete move puzzle or game.</p>
+<dl class="docutils">
+<dt>‘pos’: Puzzle the current instance of the Puzzle (same as the </dt>
+<dd>traditional ‘self’ object.  So when calling solve() you do not 
+specify this argument.</dd>
+<dt>‘game’ <span class="classifier-delimiter">:</span> <span class="classifier">copy of the game object, used as second iterable for a second </span></dt>
+<dd>pass of moves for stepping through the solution trail.</dd>
+<dt>‘depthFirst’: bool when False implements a Breadth-first walk through the </dt>
+<dd>state space of the game.</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="puzzsolver2.Puzzle2">
+<em class="property">class </em><code class="descclassname">puzzsolver2.</code><code class="descname">Puzzle2</code><a class="headerlink" href="#puzzsolver2.Puzzle2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">collections.deque</span></code></p>
+<p>Generic discrete state puzzle solver.  A Puzzle instantiation inherited 
+from this class must have a current state ‘pos’ and an iterator defined in 
+an __iter__() function.  It must also implement a method canonical() which
+transforms a state ‘pos’ into a canonical form (equivalence class standard 
+representative), how you do this is up to you and depends on the particulars
+of your puzzle.</p>
+<p>For an example see,
+‘./jug_fill/jug_fill2.py’</p>
+<p>Should work for any game/puzzle where a give state (or position ‘pos’) of 
+the game can be specified by a list or string, and a move is a discrete 
+transform of the state.</p>
+<dl class="method">
+<dt id="puzzsolver2.Puzzle2.solve">
+<code class="descname">solve</code><span class="sig-paren">(</span><em>pos</em>, <em>game</em>, <em>depthFirst=False</em><span class="sig-paren">)</span><a class="headerlink" href="#puzzsolver2.Puzzle2.solve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generic solver for a finite state discrete move puzzle or game.</p>
+<dl class="docutils">
+<dt>‘pos’: Puzzle the current instance of the Puzzle (same as the </dt>
+<dd>traditional ‘self’ object.  So when calling solve() you do not 
+specify this argument.</dd>
+<dt>‘game’ <span class="classifier-delimiter">:</span> <span class="classifier">copy of the game object, used as second iterable for a second </span></dt>
+<dd>pass of moves for stepping through the solution trail.</dd>
+<dt>‘depthFirst’: bool when False implements a Breadth-first walk through the </dt>
+<dd>state space of the game.</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="puzzsolver2.PuzzleTrail">
+<em class="property">class </em><code class="descclassname">puzzsolver2.</code><code class="descname">PuzzleTrail</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#puzzsolver2.PuzzleTrail" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">collections.deque</span></code></p>
+<p>Generic discrete state puzzle solver.  A Puzzle instantiation inherited 
+from this class must have a current state ‘pos’ and an iterator defined in 
+an __iter__() function.  It must also implement a method canonical() which
+transforms a state ‘pos’ into a canonical form (equivalence class standard 
+representative), how you do this is up to you and depends on the particulars
+of your puzzle.</p>
+<p>For an example see,
+‘./jug_fill/jug_fill_trail.py’</p>
+<dl class="method">
+<dt id="puzzsolver2.PuzzleTrail.solve">
+<code class="descname">solve</code><span class="sig-paren">(</span><em>pos</em>, <em>depthFirst=False</em><span class="sig-paren">)</span><a class="headerlink" href="#puzzsolver2.PuzzleTrail.solve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generic solver for a finite state discrete move puzzle or game.</p>
+<dl class="docutils">
+<dt>‘pos’: Puzzle  the current instance of the Puzzle (same as the </dt>
+<dd>traditional ‘self’ object.  So when calling solve() you do not 
+specify this argument.</dd>
+<dt>‘depthFirst’: bool when False implements a Breadth-first walk through the </dt>
+<dd>state space of the game.</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="puzzsolver2.lgm">
+<code class="descclassname">puzzsolver2.</code><code class="descname">lgm</code><span class="sig-paren">(</span><em>msg</em>, <em>console=False</em><span class="sig-paren">)</span><a class="headerlink" href="#puzzsolver2.lgm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Bijou M. Smith.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

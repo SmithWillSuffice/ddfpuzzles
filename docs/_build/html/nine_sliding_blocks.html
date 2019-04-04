@@ -1,0 +1,404 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>nine_sliding_blocks module &mdash; ddfpuzzles 1.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="ddfpuzzles 1.0.1 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ddfpuzzles
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">nine_sliding_blocks module</a><ul>
+<li><a class="reference internal" href="#general-theory">General Theory</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ddfpuzzles</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>nine_sliding_blocks module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/nine_sliding_blocks.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-nine_sliding_blocks">
+<span id="nine-sliding-blocks-module"></span><h1>nine_sliding_blocks module<a class="headerlink" href="#module-nine_sliding_blocks" title="Permalink to this headline">¶</a></h1>
+<p>Nine Sliding Blocks Square Puzzle - demo script for <cite>puzzles.puzzle</cite></p>
+<dl class="docutils">
+<dt>Provides:</dt>
+<dd>class <a class="reference internal" href="#nineblockspuzzle">NineBlocksPuzzle</a> for solving a given game.</dd>
+</dl>
+<p>Teaching demo for Python puzzle module.  Provides a solver for a famous
+sliding block puzzle with 9 blocks, one 2x2, six 2x1 and two 1x1 blocks 
+arranged in a 5x4 grid, which leaves two 1x1 holes.</p>
+<p>Goal is to get from some initial state to a state with the 2x2 block in the 
+lower left corner.</p>
+<p>Raymond Hettinger (see ref below) came up with a nice representation of the 
+state and the solution.</p>
+<p>State is a string of the block label (blocks ‘0’ through ‘9’, with the 2x2 
+block having the label ‘1’, and the holes labelled ‘0’) in row order 
+positions. So a state,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;</span>
+<span class="go"> 1 1 2 2</span>
+<span class="go"> 1 1 3 4</span>
+<span class="go"> 0 0 3 4</span>
+<span class="go"> 5 6 6 8</span>
+<span class="go"> 5 7 7 9</span>
+</pre></div>
+</div>
+<p>has the 2x2 block in the upper left, and the two 1x1 blocks in the lower 
+right-most cells, and string representation:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pos</span> <span class="o">=</span> <span class="s1">&#39;112211343456685779&#39;</span>
+</pre></div>
+</div>
+<p>A solution is any match to the regular expression,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="sa">r</span><span class="s1">&#39;................1...&#39;</span>
+</pre></div>
+</div>
+<p>since if the 2x2 block (label ‘1’) covers the lower left corner, there is 
+only one unique way it can do so.</p>
+<p>References:
+&lt;<a class="reference external" href="http://bayareapython.com/media/raymond-2018-holiday-party/puzzle.html#sliding-block-puzzle">http://bayareapython.com/media/raymond-2018-holiday-party/puzzle.html#sliding-block-puzzle</a>&gt;
+&lt;<a class="reference external" href="https://www.youtube.com/watch?v=lOWeCyOvRGk&amp;t=352s">https://www.youtube.com/watch?v=lOWeCyOvRGk&amp;t=352s</a>&gt;</p>
+<div class="section" id="general-theory">
+<h2>General Theory<a class="headerlink" href="#general-theory" title="Permalink to this headline">¶</a></h2>
+<p>All Finite State Discrete Move puzzles have a solution unless they are blocked 
+by some keyhole to an insoluble state that cannot be reversed out of, or if the 
+initial state is in a region of state space disjoint by moves from the 
+solution space.  In terms of a graph connecting states by moves we want the 
+initial state to be connected to all valid solution states by at least 
+one edge.</p>
+<p>The solution algorithm uses two key general puzzle solving ideas that are 
+almost generic for a Finite State Discrete Move Puzzle:</p>
+<ol class="arabic">
+<li><p class="first">Canonical states: some relabellings are equivalent, e.g. if we swap any 
+pair of the 2x1 blocks the state is unchanged.  We want to recognize such 
+states if they are encountered because a repeat of a canonical state 
+represents no progress.</p>
+</li>
+<li><p class="first">Iterable moves: we want to be able to do breadth or depth searches through 
+all possible moves!!!  Although brute- force, this can be done in ugly or 
+elegant ways, and we want an elegant way.</p>
+<p>Think of the space explored as a tree growing branches (or roots) 
+downwards, with the initial state at the top.</p>
+<ul class="simple">
+<li>Breadth first tries out all moves possible from given state before 
+exploring newly opened moves.  So we branch a lot, in fact maximally.  
+When a branch hits a previously accessed canonical state it is 
+terminated (removed from the search history).  The explored tree grows 
+flat, one level of branching at a time.</li>
+<li>Depth first search tries new moves as soon as they are opened.  When a 
+previously accessed canonical state is reached they are deemed to hit a 
+dead end, and the search then must back track and try one of the 
+alternative branches of moves, the next higher branch above.  The 
+exploration tree thus grows as separate ‘finger’ one branch at a time, 
+deepest subbranches grow before primary sub-branches.</li>
+</ul>
+</li>
+</ol>
+<p>Copyright (c) 2019, Bijou Murray Smith</p>
+<p>Licence: GNU GPL.v.3, see: &lt;<a class="reference external" href="https://www.gnu.org/licenses/gpl.txt">https://www.gnu.org/licenses/gpl.txt</a>&gt;</p>
+<dl class="class">
+<dt id="nine_sliding_blocks.NineBlocksPuzzle">
+<em class="property">class </em><code class="descclassname">nine_sliding_blocks.</code><code class="descname">NineBlocksPuzzle</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#nine_sliding_blocks.NineBlocksPuzzle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ddfpuzzles.puzzsolver.PuzzSolver</span></code></p>
+<p id="nineblockspuzzle">NineBlocksPuzzle inherited from Puzzle is an iterable which when iterated 
+goes through all possible moves of the game in the current state.  The member 
+‘pos’ is the current state of the game.</p>
+<p>Attributes:</p>
+<dl class="docutils">
+<dt>pos </dt>
+<dd>– Starting position of the game.</dd>
+<dt>goal </dt>
+<dd>– regular expression which any valid solution must match.</dd>
+<dt>b_equiv </dt>
+<dd>– string translation dict for transforming an arbitrary ‘pos’ into 
+a canonical form..</dd>
+<dt>block </dt>
+<dd>– set of tuples of the form (‘place’, ‘move’) specifying disallowed 
+moves of any holes in the given ‘place’ on the game grid.</dd>
+</dl>
+<p>Usage:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">nine_block_puzzle</span> <span class="k">import</span> <span class="n">NineBlocksPuzzle</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pprint</span> <span class="k">import</span> <span class="n">pprint</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="n">NineBlocksPuzzle</span><span class="p">()</span><span class="o">.</span><span class="n">solve</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Notes:</p>
+<p>Puzzle implements a general solve() function which uses the iterator to 
+search either Breadth-first or Depth-first to find a valid solution. To do so 
+the inheriting child class (here NineBlocksPuzzle ) must implement an isgoal() 
+method returning True iff the current state is a solution.</p>
+<p>See the module documentation for an overview.  This class starts from a 
+game position:</p>
+<div class="line-block">
+<div class="line">1122</div>
+<div class="line">1133</div>
+<div class="line">4500</div>
+<div class="line">6788</div>
+<div class="line">6799</div>
+</div>
+<p>represented by the string</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pos</span> <span class="o">=</span> <span class="s1">&#39;112211343456685779&#39;</span>
+</pre></div>
+</div>
+<p>The goal is a regular expression, and we’d expect:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">goal</span><span class="p">,</span><span class="s1">&#39;22222222222222222221&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">goal</span><span class="p">,</span><span class="s1">&#39;22222222222222221xx1&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<dl class="attribute">
+<dt id="nine_sliding_blocks.NineBlocksPuzzle.b_equivs">
+<code class="descname">b_equivs</code><em class="property"> = {51: 50, 53: 52, 55: 54, 56: 50, 57: 50}</em><a class="headerlink" href="#nine_sliding_blocks.NineBlocksPuzzle.b_equivs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nine_sliding_blocks.NineBlocksPuzzle.block">
+<code class="descname">block</code><em class="property"> = {(2, -4), (16, 4), (7, 1), (16, -1), (3, 1), (19, 4), (18, 4), (15, 1), (8, -1), (11, 1), (3, -4), (12, -1), (1, -4), (0, -1), (19, 1), (4, -1), (17, 4), (0, -4)}</em><a class="headerlink" href="#nine_sliding_blocks.NineBlocksPuzzle.block" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nine_sliding_blocks.NineBlocksPuzzle.canonical">
+<code class="descname">canonical</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nine_sliding_blocks.NineBlocksPuzzle.canonical" title="Permalink to this definition">¶</a></dt>
+<dd><p>The member ‘b_equivs’ is a dictionary specifying a transform of 
+letters for a substitution pattern.  So if</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b_equivs</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s1">&#39;45678&#39;</span><span class="p">,</span><span class="s1">&#39;33229&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>then we are saying ‘4’ and ‘5’ are equivalent to ‘3’,
+‘6’ and ‘7’ are equivalent to ‘2’, and ‘8’ is equivalent to‘9’
+This means we can eliminate all ‘4’,‘5’,‘6’,‘7’,‘8’ from any state.
+So a canonical form of the general position,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;23230081111944556767&#39;</span>
+</pre></div>
+</div>
+<p>would be</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">canonical</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;23230091111933332222&#39;</span>
+</pre></div>
+</div>
+<p>Basically a ‘3’ is a generic vertical 2x1 block, and a ‘2’ is a 
+generic horizontal 1x2 block.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="nine_sliding_blocks.NineBlocksPuzzle.goal">
+<code class="descname">goal</code><em class="property"> = re.compile('................1...')</em><a class="headerlink" href="#nine_sliding_blocks.NineBlocksPuzzle.goal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nine_sliding_blocks.NineBlocksPuzzle.isgoal">
+<code class="descname">isgoal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nine_sliding_blocks.NineBlocksPuzzle.isgoal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nine_sliding_blocks.NineBlocksPuzzle.pos">
+<code class="descname">pos</code><em class="property"> = '11221133450067886799'</em><a class="headerlink" href="#nine_sliding_blocks.NineBlocksPuzzle.pos" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Bijou M. Smith.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
