@@ -1,4 +1,4 @@
-from dffpuzzles.nine_sliding_blocks import NineBlocksPuzzle
+from ddfpuzzles.nine_sliding_blocks import NineBlocksPuzzle
 import pytest
 
 class TestNineBlocks(object):

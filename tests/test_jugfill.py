@@ -1,4 +1,4 @@
-from dffpuzzles.jug_fill import JugFill
+from ddfpuzzles.jug_fill import JugFill
 import pytest 
 
 class TestJugFill(object):
